@@ -4,7 +4,7 @@ export default function SearchNews() {
   return (
     <form>
       <input
-        className="bg-amber-50 rounded-full w-44 h-7 text-stone-900 px-4 py-0.25 md:w-96 focus:outline-none focus:w-56"
+        className="bg-amber-50 rounded-full w-44 h-7 text-stone-900 px-4 py-0.25 md:w-96 focus:outline-none focus:w-56 md:focus:w-96"
         type="text"
         placeholder="search for news"
       />
