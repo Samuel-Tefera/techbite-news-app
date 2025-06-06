@@ -4,19 +4,14 @@ import SearchNews from '../features/SearchNews';
 
 export default function Navigation() {
   return (
-    <nav className="flex items-center justify-between py-3 px-4 bg-slate-800 text-amber-100">
-      <Link className="text-xl sm:text-2xl">TechBite</Link>
-      <SearchNews />
-      <div className="hidden sm:block">
-        <ul className="flex items-center justify-between gap-4">
-          <li className="">
-            <a href="#">Home</a>
-          </li>
-          <li className="">
-            <a href="#">About Us</a>
-          </li>
-        </ul>
+    <nav className="flex flex-col gap-2 sm:flex-row text-center sm:text-left items-center justify-between px-16 py-4 shadow-md">
+      <div>
+        <Link className="text-2xl font-semibold" to="#">
+          <span className="text-blue-700">Tech</span>Bite
+        </Link>
+        <p className="font-light">Stay Sharp With Daily Tech Headlines!</p>
       </div>
+      <SearchNews />
     </nav>
   );
 }
