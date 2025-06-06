@@ -9,8 +9,12 @@ export default function Navigation() {
       <SearchNews />
       <div className="hidden sm:block">
         <ul className="flex items-center justify-between gap-4">
-          <li className="">Home</li>
-          <li className="">About Us</li>
+          <li className="">
+            <a href="#">Home</a>
+          </li>
+          <li className="">
+            <a href="#">About Us</a>
+          </li>
         </ul>
       </div>
     </nav>
