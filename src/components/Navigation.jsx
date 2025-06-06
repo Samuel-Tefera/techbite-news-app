@@ -7,7 +7,7 @@ export default function Navigation() {
     <nav className="flex flex-col gap-2 sm:flex-row text-center sm:text-left items-center justify-between px-16 py-4 shadow-md">
       <div>
         <Link className="text-2xl font-semibold" to="#">
-          <span className="text-blue-700">Tech</span>Bite
+          <span className="text-blue-600">Tech</span>Bite
         </Link>
         <p className="font-light">Stay Sharp With Daily Tech Headlines!</p>
       </div>
