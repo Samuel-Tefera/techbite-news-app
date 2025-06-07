@@ -46,7 +46,7 @@ export default function SideBar() {
           </select>
         </div>
         <div className="text-center">
-          <button className="text-sky-100 bg-blue-600 px-4 py-2 w-full rounded-md uppercase font-semibold">
+          <button className="text-white bg-blue-600 px-4 py-2 w-full rounded-md uppercase font-semibold cursor-pointer hover:bg-blue-700 transition-all">
             Apply Filters
           </button>
         </div>
