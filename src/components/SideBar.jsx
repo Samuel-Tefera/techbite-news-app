@@ -4,7 +4,7 @@ export default function SideBar() {
   const [isSideBarHidden, setSideBarHidden] = useState(true);
 
   let sideBarClasses =
-    'md:w-1/5 w-1/2 fixed h-screen shadow-md px-4 py-8 bg-white z-50 transition-all duration-300 ease-in-out';
+    'md:w-1/5 fixed h-screen shadow-md px-4 py-8 bg-white z-50 transition-all duration-300 ease-in-out';
   let sideButtonClasses = 'md:hidden cursor-pointer z-40';
 
   if (isSideBarHidden) {
@@ -26,14 +26,14 @@ export default function SideBar() {
   return (
     <>
       <button onClick={openSideBarHandler} className={sideButtonClasses}>
-        <i className="fas fa-list"></i>
+        <i className="text-xl font-light fixed fas fa-list"></i>
       </button>
       <div className={sideBarClasses}>
         <div className="border-b border-b-stone-200 mb-4">
           <h3 className="text-xl font-bold pb-2">Filters</h3>
           <button
             onClick={closeSideBarHandler}
-            className="absolute top-0 right-[1px] cursor-pointer md:hidden"
+            className="absolute top-0 font-light right-[1px] text-xl cursor-pointer md:hidden"
           >
             <i className="fas fa-xmark"></i>
           </button>
