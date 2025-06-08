@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 
 export default function SideBar() {
   const [isSideBarHidden, setSideBarHidden] = useState(true);
-  let sideBarClasses;
-  let sideButtonClasses;
+
+  let sideBarClasses =
+    'md:w-1/5 w-1/2 fixed h-screen shadow-md px-4 py-8 bg-white z-50 transition-all duration-300 ease-in-out';
+  let sideButtonClasses = 'md:hidden cursor-pointer z-40';
+
   if (isSideBarHidden) {
-    sideBarClasses = 'md:w-1/5 hidden md:block w-1/2 fixed h-screen shadow-md px-4 py-8';
-    sideButtonClasses = 'md:hidden cursor-pointer';
+    sideBarClasses += ' -translate-x-full md:translate-x-0';
+    sideButtonClasses = 'md:hidden cursor-pointer z-40';
   } else {
-    sideBarClasses = 'md:w-1/5  w-1/2 fixed h-screen shadow-md px-4 py-8';
+    sideBarClasses += ' translate-x-0';
     sideButtonClasses = 'hidden cursor-pointer';
   }
 
@@ -23,16 +26,16 @@ export default function SideBar() {
   return (
     <>
       <button onClick={openSideBarHandler} className={sideButtonClasses}>
-        Sidebar
+        <i className="fas fa-list"></i>
       </button>
       <div className={sideBarClasses}>
-        <div className="border-b border-b-stone-200  mb-4">
-          <h3 className="text-xl font-bold  pb-2">Filters</h3>
+        <div className="border-b border-b-stone-200 mb-4">
+          <h3 className="text-xl font-bold pb-2">Filters</h3>
           <button
             onClick={closeSideBarHandler}
             className="absolute top-0 right-[1px] cursor-pointer md:hidden"
           >
-            ===
+            <i className="fas fa-xmark"></i>
           </button>
         </div>
         <form>
@@ -40,23 +43,23 @@ export default function SideBar() {
             <h4 className="font-semibold mb-2">Categories</h4>
             <div className="flex items-center gap-2.5">
               <input type="checkbox" value="ai" checked />
-              <lable>Artificial Intelligence</lable>
+              <label>Artificial Intelligence</label>
             </div>
             <div className="flex items-center gap-2.5">
               <input type="checkbox" value="hw" checked />
-              <lable>Hardware</lable>
+              <label>Hardware</label>
             </div>
             <div className="flex items-center gap-2.5">
               <input type="checkbox" value="sw" checked />
-              <lable>Software</lable>
+              <label>Software</label>
             </div>
             <div className="flex items-center gap-2.5">
               <input type="checkbox" value="startups" checked />
-              <lable>Startups</lable>
+              <label>Startups</label>
             </div>
             <div className="flex items-center gap-2.5">
               <input type="checkbox" value="cyber" checked />
-              <lable>Cybersecurity</lable>
+              <label>Cybersecurity</label>
             </div>
           </div>
           <div className="mb-4">
