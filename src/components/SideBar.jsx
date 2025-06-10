@@ -4,7 +4,7 @@ export default function SideBar() {
   const [isSideBarHidden, setSideBarHidden] = useState(true);
 
   let sideBarClasses =
-    'md:w-1/5 fixed h-screen shadow-md px-4 py-8 bg-white z-50 transition-all duration-300 ease-in-out';
+    'fixed md:static h-screen shadow-md px-4 py-8 bg-white z-50 transition-all duration-300 ease-in-out';
   let sideButtonClasses = 'md:hidden cursor-pointer z-40';
 
   if (isSideBarHidden) {
