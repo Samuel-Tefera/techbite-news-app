@@ -14,7 +14,7 @@ export default function NewsCard({ news }) {
     link,
   } = news;
   return (
-    <div className="w-[320px] shadow-md rounded-b-md">
+    <div className="shadow-md rounded-b-md">
       <img className="h-44 w-full rounded-md" src={image_url} alt={title} />
       <div className="py-4 px-6">
         <NewsKeyWord keywords={keywords} />
