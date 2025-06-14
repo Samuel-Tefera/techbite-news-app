@@ -1,5 +1,16 @@
 import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import Home from './pages/Home';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+    errorElement: null,
+  },
+]);
 
 export default function App() {
-  return <div className="text-xl bg-yellow-700"> Hello vite</div>;
+  return <RouterProvider router={router} />;
 }
