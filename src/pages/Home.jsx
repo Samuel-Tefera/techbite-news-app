@@ -9,7 +9,7 @@ export default function Home() {
       <header>
         <Navigation />
       </header>
-      <main className="grid md:grid-cols-5 sm:mt-23 mt-18">
+      <main className="grid lg:grid-cols-5 sm:mt-23 mt-18">
         <div className="col-span-1">
           <SideBar />
         </div>
