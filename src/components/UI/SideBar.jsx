@@ -4,12 +4,12 @@ export default function SideBar() {
   const [isSideBarHidden, setSideBarHidden] = useState(true);
 
   let sideBarClasses =
-    'fixed md:static h-screen shadow-md px-4 py-8 bg-white z-50 transition-all duration-300 ease-in-out';
-  let sideButtonClasses = 'md:hidden cursor-pointer z-40';
+    'fixed lg:static h-screen shadow-md px-4 py-8 bg-white z-50 transition-all duration-300 ease-in-out';
+  let sideButtonClasses = 'lg:hidden cursor-pointer z-40';
 
   if (isSideBarHidden) {
-    sideBarClasses += ' -translate-x-full md:translate-x-0';
-    sideButtonClasses = 'md:hidden cursor-pointer z-40';
+    sideBarClasses += ' -translate-x-full lg:translate-x-0';
+    sideButtonClasses = 'lg:hidden cursor-pointer z-40';
   } else {
     sideBarClasses += ' translate-x-0';
     sideButtonClasses = 'hidden cursor-pointer';
@@ -26,16 +26,16 @@ export default function SideBar() {
   return (
     <>
       <button onClick={openSideBarHandler} className={sideButtonClasses}>
-        <i className="text-xl font-light fixed fas fa-list"></i>
+        <i className="text-xl font-light fixed fas fa-list left-1" />
       </button>
       <div className={sideBarClasses}>
         <div className="border-b border-b-stone-200 mb-4">
           <h3 className="text-xl font-bold pb-2">Filters</h3>
           <button
             onClick={closeSideBarHandler}
-            className="absolute top-0 font-light right-[1px] text-xl cursor-pointer md:hidden"
+            className="absolute top-0 font-light right-1 text-xl cursor-pointer lg:hidden"
           >
-            <i className="fas fa-xmark"></i>
+            <i className="fas fa-xmark" />
           </button>
         </div>
         <form>
