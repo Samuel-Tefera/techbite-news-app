@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import NewsCard from './NewsCard';
-import LoadingSpinner from '../LoadingSpinner';
+import LoadingSpinner from '../UI/LoadingSpinner';
 import { getLatestNews } from '../../services/api-newsData';
 
 export default function NewsList() {
@@ -45,7 +45,7 @@ export default function NewsList() {
 
     const handleScroll = () => {
       const { scrollTop, scrollHeight, clientHeight } = container;
-      const isNearBottom = scrollHeight - scrollTop - clientHeight < 50;
+      const isNearBottom = scrollHeight - scrollTop - clientHeight < 1;
 
       if (isNearBottom && !isFetchingMore && pageId) {
         fetchNews(pageId);

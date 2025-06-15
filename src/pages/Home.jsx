@@ -1,7 +1,6 @@
-import '../components/Navigation';
-import Navigation from '../components/Navigation';
-import SideBar from '../components/SideBar';
-import Footer from '../components/Footer';
+import Navigation from '../components/UI/Navigation';
+import SideBar from '../components/UI/SideBar';
+import Footer from '../components/UI/Footer';
 import NewsList from '../components/News/NewsList';
 
 export default function Home() {
