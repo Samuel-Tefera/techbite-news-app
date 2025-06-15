@@ -9,7 +9,7 @@ export default function Navigation() {
         <Link className="text-xl md:text-3xl sm:text-2xl font-semibold" to="#">
           <span className="text-blue-600">Tech</span>Bite
         </Link>
-        <p className="font-light lg:block hidden">
+        <p className="lg:block hidden font-medium">
           Stay Sharp With Daily Tech Headlines!
         </p>
       </div>
