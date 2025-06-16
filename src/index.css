@@ -33,3 +33,14 @@
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
+
+@media (max-width: 350px) {
+  .xs-screen {
+    width: 150px;
+    font-size: 0.7rem;
+  }
+  .xs-button {
+    left: 120px;
+    font-size: 1rem;
+  }
+}
