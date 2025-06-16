@@ -59,10 +59,10 @@ export default function NewsList() {
   return (
     <div
       ref={scrollContainerRef}
-      className="sm:px-10 px-6 col-span-4 h-screen overflow-y-scroll minimal-scrollbar"
+      className="sm:px-10 px-6 col-span-4 h-screen overflow-y-scroll minimal-scrollbar bg-gray-50 dark:bg-gray-900"
     >
       <div className="py-3 sm:py-6">
-        <h2 className="py-3 text-xl sm:text-2xl border-b border-stone-200 font-semibold">
+        <h2 className="py-3 text-xl sm:text-2xl border-b border-gray-200 dark:border-gray-700 font-semibold text-gray-900 dark:text-white">
           Latest Tech News
         </h2>
       </div>

@@ -6,11 +6,11 @@ import NewsList from '../components/News/NewsList';
 export default function Home() {
   return (
     <>
-      <header>
+      <header className="bg-white dark:bg-gray-800 shadow-sm">
         <Navigation />
       </header>
-      <main className="grid lg:grid-cols-5 sm:mt-23 mt-18">
-        <div className="col-span-1">
+      <main className="grid lg:grid-cols-5 sm:mt-23 mt-16 bg-gray-50 dark:bg-gray-900">
+        <div className="col-span-1 bg-white dark:bg-gray-800 shadow-sm">
           <SideBar />
         </div>
         <NewsList />
