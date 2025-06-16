@@ -18,7 +18,7 @@ export default function Navigation() {
           Stay Sharp With Daily Tech Headlines!
         </p>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <SearchNews />
         <ThemeToggler />
       </div>
