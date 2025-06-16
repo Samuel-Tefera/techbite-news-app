@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home';
 
 const router = createBrowserRouter([
@@ -12,5 +12,11 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-500">
+        <RouterProvider router={router} />
+      </div>
+    </ThemeProvider>
+  );
 }
