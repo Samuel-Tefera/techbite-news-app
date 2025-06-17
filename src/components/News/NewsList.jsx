@@ -2,9 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import NewsCard from './NewsCard';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import { getLatestNews } from '../../services/api-newsData';
+import EmptyNewsList from './EmptyNewsList';
 
 export default function NewsList() {
   const [newsData, setNewsData] = useState([]);
+  const [error, setError] = useState({ status: false, message: '' });
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const [pageId, setPageId] = useState(null);
@@ -26,7 +28,7 @@ export default function NewsList() {
         setNewsData((prev) => [...prev, ...data.newsData]);
         setPageId(data.nextPage);
       } catch (error) {
-        console.error('Failed to fetch news:', error);
+        setError({ status: true, message: error.message });
       } finally {
         setIsFirstLoad(false);
         setIsFetchingMore(false);
@@ -66,23 +68,28 @@ export default function NewsList() {
           Latest Tech News
         </h2>
       </div>
-
-      {isFirstLoad ? (
-        <div className="flex justify-center items-center h-96">
-          <LoadingSpinner messege="Loading news..." />
-        </div>
+      {error.status ? (
+        <EmptyNewsList message={error.message} />
       ) : (
         <>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
-            {newsData.map((news, index) => (
-              <NewsCard key={index} news={news} />
-            ))}
-          </div>
-
-          {isFetchingMore && (
-            <div className="flex justify-center my-6">
-              <LoadingSpinner messege="Loading more news..." />
+          {isFirstLoad ? (
+            <div className="flex justify-center items-center h-96">
+              <LoadingSpinner message="Loading news..." />
             </div>
+          ) : (
+            <>
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
+                {newsData.map((news, index) => (
+                  <NewsCard key={index} news={news} />
+                ))}
+              </div>
+
+              {isFetchingMore && (
+                <div className="flex justify-center my-6">
+                  <LoadingSpinner message="Loading more news..." />
+                </div>
+              )}
+            </>
           )}
         </>
       )}
