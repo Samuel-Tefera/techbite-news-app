@@ -1,12 +1,32 @@
-# React + Vite
+# TechBite - Stay Sharp With Daily Tech Headlines! 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TechBite is a modern, responsive web application that brings you the latest technology news from around the world using NewsData.io API. Built with React and Vite, it offers a seamless user experience with real-time updates and powerful features.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🔍 Smart Search
 
-## Expanding the ESLint configuration
+- Real-time search functionality for tech news articles
+- Search by keywords, titles, and content
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📱 Responsive Design
+
+- Fully responsive layout that works on all devices
+- Mobile-first approach
+- Beautiful UI with smooth transitions
+
+### 🌓 Dark/Light Mode
+
+- Automatic theme detection based on system preferences
+- Manual theme toggle option
+- Smooth theme transitions
+
+### 📰 News Features
+
+- Latest technology news from reliable sources
+- Real-time updates
+- Infinite scroll for seamless browsing
+- Article previews with images
+- Keywords and tags for easy categorization
+- Time-ago format for publication dates
+- Source attribution
