@@ -1,9 +1,10 @@
 const API_KEY = import.meta.env.VITE_NEWSDATA_API_KEY;
 const API_URL = `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&category=technology,science`;
 
-export async function getLatestNews(pageId = null) {
+export async function getLatestNews(pageId = null, qInTitle = null) {
   try {
-    const newsPage = pageId ? `${API_URL}&page=${pageId}` : API_URL;
+    let newsPage = pageId ? `${API_URL}&page=${pageId}` : API_URL;
+    newsPage = qInTitle ? `${API_URL}&qintitle=${qInTitle}` : newsPage;
     const response = await fetch(newsPage);
     if (!response.ok) {
       const errorBody = await response.json().catch(() => ({}));
@@ -24,7 +25,6 @@ export async function getLatestNews(pageId = null) {
   }
   // const response = await fetch('../../mock/sample-news.json');
   // const data = await response.json();
-  // console.log(data);
   // return {
   //   newsData: data.results,
   //   nextPage: data.nextPage,
