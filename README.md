@@ -1,27 +1,27 @@
-# TechBite - Stay Sharp With Daily Tech Headlines! 🚀
+# TechBite - Stay Sharp With Daily Tech Headlines!
 
 TechBite is a modern, responsive web application that brings you the latest technology news from around the world using NewsData.io API. Built with React and Vite, it offers a seamless user experience with real-time updates and powerful features.
 
-## ✨ Features
+## Features
 
-### 🔍 Smart Search
+### Smart Search
 
 - Real-time search functionality for tech news articles
 - Search by keywords, titles, and content
 
-### 📱 Responsive Design
+### Responsive Design
 
 - Fully responsive layout that works on all devices
 - Mobile-first approach
 - Beautiful UI with smooth transitions
 
-### 🌓 Dark/Light Mode
+### Dark/Light Mode
 
 - Automatic theme detection based on system preferences
 - Manual theme toggle option
 - Smooth theme transitions
 
-### 📰 News Features
+### News Features
 
 - Latest technology news from reliable sources
 - Real-time updates
