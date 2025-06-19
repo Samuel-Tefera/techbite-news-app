@@ -3,6 +3,7 @@ import NewsCard from './NewsCard';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import { getLatestNews } from '../../services/api-newsData';
 import EmptyNewsList from './EmptyNewsList';
+import { useSearch } from '../../context/SearchContext';
 
 export default function NewsList() {
   const [newsData, setNewsData] = useState([]);
@@ -10,6 +11,8 @@ export default function NewsList() {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const [pageId, setPageId] = useState(null);
+  const { query } = useSearch();
+
   const scrollContainerRef = useRef(null);
 
   const fetchNews = useCallback(
@@ -22,9 +25,8 @@ export default function NewsList() {
       } else {
         setIsFetchingMore(true);
       }
-
       try {
-        const data = await getLatestNews(page);
+        const data = await getLatestNews(page, query);
         setNewsData((prev) => [...prev, ...data.newsData]);
         setPageId(data.nextPage);
       } catch (error) {
@@ -34,12 +36,32 @@ export default function NewsList() {
         setIsFetchingMore(false);
       }
     },
-    [isFetchingMore, newsData.length]
+    [isFetchingMore, newsData.length, query]
   );
 
   useEffect(() => {
     fetchNews(null);
   }, [fetchNews]);
+
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      setIsFirstLoad(true);
+      setNewsData([]);
+      setError({ status: false, message: '' });
+
+      try {
+        const data = await getLatestNews(null, query);
+        setNewsData(data.newsData);
+        setPageId(data.nextPage);
+      } catch (error) {
+        setError({ status: true, message: error.message });
+      } finally {
+        setIsFirstLoad(false);
+      }
+    };
+
+    fetchSearchResults();
+  }, [query]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -65,7 +87,9 @@ export default function NewsList() {
     >
       <div className="py-3 sm:py-6">
         <h2 className="py-3 text-xl sm:text-2xl border-b border-gray-200 dark:border-gray-700 font-semibold text-gray-900 dark:text-white">
-          Latest Tech News
+          {query
+            ? `Your Search "${query}" Latest Tech News Result`
+            : 'Latest Tech News'}
         </h2>
       </div>
       {error.status ? (
