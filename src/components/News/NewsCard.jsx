@@ -13,6 +13,10 @@ export default function NewsCard({ news }) {
           src={image_url}
           alt={`${title} - Tech News Image`}
           loading="lazy"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'images/fallback-image.png';
+          }}
         />
       </div>
       <div className="pb-4 px-4 flex flex-col flex-grow">
