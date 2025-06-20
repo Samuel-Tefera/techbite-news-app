@@ -10,7 +10,7 @@ export default function NewsCard({ news }) {
       <div className="relative">
         <img
           className="w-full rounded-t-md h-48 object-cover dark:text-white"
-          src={image_url}
+          src={image_url ? image_url : 'images/fallback-image.png'}
           alt={`${title} - Tech News Image`}
           loading="lazy"
           onError={(e) => {
