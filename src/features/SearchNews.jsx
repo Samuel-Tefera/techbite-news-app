@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useSearch } from '../context/SearchContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchNews() {
   const [searchInput, setSearchInput] = useState('');
-  const { setQuery } = useSearch();
+  const navigate = useNavigate();
   function searchNewsHandler(e) {
     e.preventDefault();
-    setQuery(searchInput);
+    navigate(`/?search=${encodeURIComponent(searchInput.trim())}`);
   }
   return (
     <form onSubmit={searchNewsHandler} className="flex items-center relative">
