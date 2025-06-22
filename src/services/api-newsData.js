@@ -10,7 +10,10 @@ export async function getLatestNews(pageId = null, qInTitle = null) {
       const errorBody = await response.json().catch(() => ({}));
       const message =
         errorBody.message || `Error ${response.status}: ${response.statusText}`;
-      throw new Error(message);
+      const error = new Error(message);
+      error.status = response.status;
+
+      throw error;
     }
     const data = await response.json();
     return {
@@ -18,10 +21,10 @@ export async function getLatestNews(pageId = null, qInTitle = null) {
       nextPage: data.nextPage,
     };
   } catch (error) {
-    console.error('API Request Error:', error);
-    throw new Error(
-      error.message || 'Something went wrong with the API request.'
-    );
+    if (!error.status) {
+      error.status = 500;
+    }
+    throw error;
   }
   // const response = await fetch('../../mock/sample-news.json');
   // const data = await response.json();
