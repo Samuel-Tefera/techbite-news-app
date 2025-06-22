@@ -3,15 +3,13 @@ import NewsCard from './NewsCard';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import { getLatestNews } from '../../services/api-newsData';
 import EmptyNewsList from './EmptyNewsList';
-import { useSearch } from '../../context/SearchContext';
 
-export default function NewsList() {
+export default function NewsList({ query }) {
   const [newsData, setNewsData] = useState([]);
-  const [error, setError] = useState({ status: false, message: '' });
+  const [error, setError] = useState(null);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const [pageId, setPageId] = useState(null);
-  const { query } = useSearch();
 
   const scrollContainerRef = useRef(null);
 
@@ -30,7 +28,7 @@ export default function NewsList() {
         setNewsData((prev) => [...prev, ...data.newsData]);
         setPageId(data.nextPage);
       } catch (error) {
-        setError({ status: true, message: error.message });
+        setError(error);
       } finally {
         setIsFirstLoad(false);
         setIsFetchingMore(false);
@@ -47,14 +45,14 @@ export default function NewsList() {
     const fetchSearchResults = async () => {
       setIsFirstLoad(true);
       setNewsData([]);
-      setError({ status: false, message: '' });
+      setError(null);
 
       try {
         const data = await getLatestNews(null, query);
         setNewsData(data.newsData);
         setPageId(data.nextPage);
-      } catch (error) {
-        setError({ status: true, message: error.message });
+      } catch (e) {
+        setError(e);
       } finally {
         setIsFirstLoad(false);
       }
@@ -80,6 +78,8 @@ export default function NewsList() {
     return () => container.removeEventListener('scroll', handleScroll);
   }, [fetchNews, isFetchingMore, pageId]);
 
+  if (error) throw error;
+
   return (
     <div
       ref={scrollContainerRef}
@@ -92,8 +92,8 @@ export default function NewsList() {
             : 'Latest Tech News'}
         </h2>
       </div>
-      {error.status ? (
-        <EmptyNewsList message={error.message} />
+      {newsData.length === 0 && !isFirstLoad && !isFetchingMore ? (
+        <EmptyNewsList />
       ) : (
         <>
           {isFirstLoad ? (
