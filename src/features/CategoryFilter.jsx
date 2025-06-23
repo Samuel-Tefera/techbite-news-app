@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-export default function CategoryFilter({ onFilter }) {
+export default function CategoryFilter() {
+  const [, setSearchParams] = useSearchParams();
+
   const [categories, setCategories] = useState([
     'ai',
     'hw',
     'sw',
     'startups',
     'cyber',
-  ]); // default: all selected
+  ]);
   const [dateRange, setDateRange] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
 
@@ -23,7 +26,11 @@ export default function CategoryFilter({ onFilter }) {
 
   const categoryFilterHandler = (e) => {
     e.preventDefault();
-    onFilter({ categories, dateRange, sortBy }); // send filters to parent
+    const params = new URLSearchParams();
+    categories.forEach((cat) => params.append('category', cat));
+    params.set('sortBy', sortBy);
+    params.set('range', dateRange);
+    setSearchParams(params);
   };
 
   return (
