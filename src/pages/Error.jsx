@@ -1,14 +1,16 @@
 import React from 'react';
-import { useNavigate, useRouteError } from 'react-router-dom';
+import { useNavigate, useRouteError, useLocation } from 'react-router-dom';
 
 export default function Error(props) {
   const routeError = useRouteError();
   const navigate = useNavigate();
   const error = props.error || routeError;
-  console.log(error);
+  const location = useLocation();
 
   let title = 'Oops';
   let message = 'Something went wrong.';
+
+  const isHome = location.pathname === '/';
 
   if (
     error?.message?.includes('NetworkError') ||
@@ -38,18 +40,17 @@ export default function Error(props) {
       <div className="text-right px-12 sm:px-22 mt-4">
         <button
           onClick={() => {
-            navigate('/');
+            isHome ? window.location.reload() : navigate('/');
           }}
           className="cursor-pointer text-sm sm:text-xl text-gray-600 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
         >
-          Go to Home&rarr;
+          {isHome ? 'Retry \u27F3' : 'Go to Home \u2192'}
         </button>
       </div>
     </div>
   );
 }
 
-// This is the class component ErrorBoundary logic
 export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
