@@ -6,7 +6,9 @@ export default function SearchNews() {
   const navigate = useNavigate();
   function searchNewsHandler(e) {
     e.preventDefault();
-    navigate(`/?search=${encodeURIComponent(searchInput.trim())}`);
+    const query = searchInput.trim();
+    if (query === '') return;
+    navigate(`/?search=${encodeURIComponent(query)}`);
   }
   return (
     <form onSubmit={searchNewsHandler} className="flex items-center relative">
