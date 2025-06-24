@@ -6,9 +6,9 @@ export default function CategoryFilter() {
 
   const [categories, setCategories] = useState([
     'ai',
-    'hw',
-    'sw',
-    'startups',
+    'hardware',
+    'software',
+    'startup',
     'cyber',
   ]);
   const [dateRange, setDateRange] = useState('all');
