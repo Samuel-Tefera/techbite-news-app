@@ -1,10 +1,17 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import NewsCard from './NewsCard';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import { getLatestNews } from '../../services/api-newsData';
 import EmptyNewsList from './EmptyNewsList';
+import { useSearchParams } from 'react-router-dom';
 
-export default function NewsList({ query }) {
+export default function NewsList() {
   const [newsData, setNewsData] = useState([]);
   const [error, setError] = useState(null);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -12,6 +19,10 @@ export default function NewsList({ query }) {
   const [pageId, setPageId] = useState(null);
 
   const scrollContainerRef = useRef(null);
+
+  const [params] = useSearchParams();
+  const categoryFilter = useMemo(() => params.getAll('category'), [params]);
+  const query = useMemo(() => params.get('search'), [params]);
 
   const fetchNews = useCallback(
     async (page) => {
@@ -24,7 +35,7 @@ export default function NewsList({ query }) {
         setIsFetchingMore(true);
       }
       try {
-        const data = await getLatestNews(page, query);
+        const data = await getLatestNews(page, query, categoryFilter);
         setNewsData((prev) => [...prev, ...data.newsData]);
         setPageId(data.nextPage);
       } catch (error) {
@@ -34,7 +45,7 @@ export default function NewsList({ query }) {
         setIsFetchingMore(false);
       }
     },
-    [isFetchingMore, newsData.length, query]
+    [isFetchingMore, newsData.length, query, categoryFilter]
   );
 
   useEffect(() => {
@@ -48,7 +59,7 @@ export default function NewsList({ query }) {
       setError(null);
 
       try {
-        const data = await getLatestNews(null, query);
+        const data = await getLatestNews(null, query, categoryFilter);
         setNewsData(data.newsData);
         setPageId(data.nextPage);
       } catch (e) {
@@ -59,7 +70,7 @@ export default function NewsList({ query }) {
     };
 
     fetchSearchResults();
-  }, [query]);
+  }, [query, categoryFilter]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
