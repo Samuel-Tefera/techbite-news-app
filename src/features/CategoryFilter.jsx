@@ -45,9 +45,9 @@ export default function CategoryFilter() {
 
         {[
           ['ai', 'Artificial Intelligence'],
-          ['hw', 'Hardware'],
-          ['sw', 'Software'],
-          ['startups', 'Startups'],
+          ['hardware', 'Hardware'],
+          ['software', 'Software'],
+          ['startup', 'Startups'],
           ['cyber', 'Cybersecurity'],
         ].map(([value, label]) => (
           <div key={value} className="flex items-center gap-2.5">
