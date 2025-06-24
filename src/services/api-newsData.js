@@ -1,10 +1,21 @@
 const API_KEY = import.meta.env.VITE_NEWSDATA_API_KEY;
 const API_URL = `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&category=technology,science`;
 
-export async function getLatestNews(pageId = null, qInTitle = null) {
+export async function getLatestNews(
+  pageId = null,
+  qInTitle = null,
+  categoryFilter
+) {
   try {
     let newsPage = pageId ? `${API_URL}&page=${pageId}` : API_URL;
     newsPage = qInTitle ? `${API_URL}&qintitle=${qInTitle}` : newsPage;
+
+    if (categoryFilter.length > 0) {
+      const orQuery = categoryFilter.join(' OR ');
+      newsPage += `&q=${encodeURIComponent(orQuery)}`;
+    }
+    console.log(newsPage);
+
     const response = await fetch(newsPage);
     if (!response.ok) {
       const errorBody = await response.json().catch(() => ({}));
