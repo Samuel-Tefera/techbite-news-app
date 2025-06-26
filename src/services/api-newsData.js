@@ -14,7 +14,6 @@ export async function getLatestNews(
       const orQuery = categoryFilter.join(' OR ');
       newsPage += `&q=${encodeURIComponent(orQuery)}`;
     }
-    console.log(newsPage);
 
     const response = await fetch(newsPage);
     if (!response.ok) {
