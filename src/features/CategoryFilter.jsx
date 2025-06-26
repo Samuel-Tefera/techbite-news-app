@@ -56,7 +56,7 @@ export default function CategoryFilter() {
               value={value}
               checked={categories.includes(value)}
               onChange={handleCheckboxChange}
-              className="dark:accent-blue-500"
+              className="dark:accent-blue-500 cursor-pointer"
             />
             <label className="text-gray-700 dark:text-gray-300">{label}</label>
           </div>
