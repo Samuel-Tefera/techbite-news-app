@@ -1,6 +1,6 @@
 # TechBite - Stay Sharp With Daily Tech Headlines!
 
-TechBite is a modern, responsive web application that brings you the latest technology news from around the world using NewsData.io API. Built with React and Vite, it offers a seamless user experience with real-time updates and powerful features.
+TechBite is a modern, responsive web application that brings you the latest technology news from around the world using [NewsData.io API](https://newsdata.io). Built with React and Vite, it offers a seamless user experience with real-time updates and powerful features.
 
 ## Features
 
